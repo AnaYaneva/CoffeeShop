@@ -3,7 +3,7 @@ package com.example.demo.web;
 import com.example.demo.model.binding.UserLoginBindingModel;
 import com.example.demo.model.binding.UserRegisterBindingModel;
 import com.example.demo.service.UserService;
-import com.example.demo.service.UserServiceModel;
+import com.example.demo.model.service.UserServiceModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -86,6 +87,12 @@ public class UserController {
         //TODO login user
     userService.loginUser(userServiceModel.getId(), userLoginBindingModel.getUsername());
 
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
 
         return "redirect:/";
     }

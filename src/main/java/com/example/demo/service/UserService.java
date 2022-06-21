@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.entity.UserEntity;
+import com.example.demo.model.service.UserServiceModel;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.sec.CurrentUser;
 import org.modelmapper.ModelMapper;
@@ -36,5 +37,9 @@ public class UserService {
     public void loginUser(Long id, String username) {
         currentUser.setId(id).setUsername(username);
 
+    }
+
+    public UserEntity findById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
 }

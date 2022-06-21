@@ -1,6 +1,4 @@
-package com.example.demo.service;
-
-import javax.persistence.Column;
+package com.example.demo.model.service;
 
 public class UserServiceModel {
 
